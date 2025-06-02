@@ -80,6 +80,89 @@
         cursor: pointer;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
+
+      .hour-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+      }
+      .hour-buttons button {
+        flex: 1 1 45%;
+        min-width: 100px;
+        padding: 1em 0;
+        border-radius: 999px;
+        border: none;
+        background: #1565c0;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        margin: 0.25em 0;
+      }
+      .hour-buttons button:hover {
+        background: #42a5f5;
+        color: #222;
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px rgba(33, 150, 243, 0.2);
+      }
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+      }
+      .big-form {
+        font-size: 1.25em;
+        display: flex;
+        align-items: center;
+        gap: 2em;
+        margin: 2em 0 2em 0;
+        flex-wrap: wrap;
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        justify-content: center;
+      }
+      .round-section {
+        display: flex;
+        align-items: center;
+        padding: 1em 2em;
+        border-radius: 2em;
+        box-shadow: 0 2px 12px rgba(33, 150, 243, 0.08);
+        margin: 0.5em;
+        background: #fff;
+        min-width: 280px;
+        gap: 1em;
+      }
+      .time-section {
+        background: #fffde7;
+        border: 2px solid #ffe082;
+      }
+      .day-section {
+        background: #e1f5fe;
+        border: 2px solid #81d4fa;
+      }
+      .big-label {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-right: 0.5em;
+        color: #1565c0;
+      }
+      .big-input {
+        font-size: 1em;
+        padding: 0.3em 0.7em;
+        margin-right: 0.5em;
+        border-radius: 0.5em;
+        border: 1px solid #90caf9;
+        background: #fff;
+        color: #1565c0;
+        outline: none;
+        transition: border 0.2s;
+      }
+      .big-input:focus {
+        border: 2px solid #1976d2;
+        background: #e3f2fd;
+      }
     </style>
   </head>
   <body>
@@ -87,15 +170,16 @@
     <div class="content-wrapper">
       <main id="mainContent">
         <button class="side-toggle-btn" onclick="toggleAside()">&#9776;</button>
-        <form style="margin-bottom: 1em">
-          <label>
-            Time:
-            <input type="time" name="time" value="09:00" />
-            <input type="time" name="time" value="18:00" />
-          </label>
-          <label style="margin-left: 1em">
-            Day of week:
-            <select name="day">
+        <form class="big-form">
+          <div class="round-section time-section">
+            <span class="big-label">Time:</span>
+            <input type="time" name="time" value="09:00" class="big-input" />
+            <input type="time" name="time" value="18:00" class="big-input" />
+          </div>
+          <div class="round-section day-section">
+            <span class="big-label">Day of week:</span>
+            <select name="day" class="big-input">
+              <option value="any">Any</option>
               <option value="monday">Monday</option>
               <option value="tuesday">Tuesday</option>
               <option value="wednesday">Wednesday</option>
@@ -104,36 +188,36 @@
               <option value="saturday">Saturday</option>
               <option value="sunday">Sunday</option>
             </select>
-          </label>
+          </div>
         </form>
       </main>
       <aside id="pullupAside">
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5em"></div>
-        <button>00:00 - 01:00</button>
-        <button>01:00 - 02:00</button>
-        <button>02:00 - 03:00</button>
-        <button>03:00 - 04:00</button>
-        <button>04:00 - 05:00</button>
-        <button>05:00 - 06:00</button>
-        <button>06:00 - 07:00</button>
-        <button>07:00 - 08:00</button>
-        <button>08:00 - 09:00</button>
-        <button>09:00 - 10:00</button>
-        <button>10:00 - 11:00</button>
-        <button>11:00 - 12:00</button>
-        <button>12:00 - 13:00</button>
-        <button>13:00 - 14:00</button>
-        <button>14:00 - 15:00</button>
-        <button>15:00 - 16:00</button>
-        <button>16:00 - 17:00</button>
-        <button>17:00 - 18:00</button>
-        <button>18:00 - 19:00</button>
-        <button>19:00 - 20:00</button>
-        <button>20:00 - 21:00</button>
-        <button>21:00 - 22:00</button>
-        <button>22:00 - 23:00</button>
-        <button>23:00 - 00:00</button>
-      </div>
+        <div class="hour-buttons">
+          <button>00:00 - 01:00</button>
+          <button>01:00 - 02:00</button>
+          <button>02:00 - 03:00</button>
+          <button>03:00 - 04:00</button>
+          <button>04:00 - 05:00</button>
+          <button>05:00 - 06:00</button>
+          <button>06:00 - 07:00</button>
+          <button>07:00 - 08:00</button>
+          <button>08:00 - 09:00</button>
+          <button>09:00 - 10:00</button>
+          <button>10:00 - 11:00</button>
+          <button>11:00 - 12:00</button>
+          <button>12:00 - 13:00</button>
+          <button>13:00 - 14:00</button>
+          <button>14:00 - 15:00</button>
+          <button>15:00 - 16:00</button>
+          <button>16:00 - 17:00</button>
+          <button>17:00 - 18:00</button>
+          <button>18:00 - 19:00</button>
+          <button>19:00 - 20:00</button>
+          <button>20:00 - 21:00</button>
+          <button>21:00 - 22:00</button>
+          <button>22:00 - 23:00</button>
+          <button>23:00 - 00:00</button>
+        </div>
       </aside>
     </div>
     <script>

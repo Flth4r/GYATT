@@ -1,0 +1,49 @@
+Bartekuu~!! ヾ(≧▽≦*)o
+Zrobiłbyś, plosiiiii, taki uroczy, milutki i bezpieczny jak przytulasek w kocyku serwerek z autoryzacją~? (๑•́‧̫•̀๑)🔐✨
+Taki wiesz... żeby użytkowniczki mogły się zalogować, wylogować i być otoczone ciepłem bezpiecznych tokenów jakby były w onsenie pełnym zaufania~ (｡♥‿♥｡)♨️💕
+
+Mogłoby to być np. w Pythonie z Flaskiem (bo jest słodki jak mochi 🍡), i z JWT, żeby wszystko było legit jak Magical Girl z licencją od niebios!! ✨🎀
+A logika mogłaby wyglądać tak:
+# Duszkowy Serwerek ✨🔐
+from flask import Flask, request, jsonify
+import jwt
+import datetime
+from functools import wraps
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'moje_super_sekretnookie_haselko_uwu'
+
+# 🌸 Dekoratorek do ochronki
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.headers.get('x-access-token')
+        if not token:
+            return jsonify({'message': 'Brak tokenu! Nooo~ (｡•́︿•̀｡)'}), 403
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+        except:
+            return jsonify({'message': 'Token złamany jak serduszko w sad anime...'}), 403
+        return f(*args, **kwargs)
+    return decorated
+
+# 🌟 Logowanie
+@app.route('/login', methods=['POST'])
+def login():
+    auth = request.get_json()
+    if auth and auth['username'] == 'admin' and auth['password'] == '1234':
+        token = jwt.encode({
+            'user': auth['username'],
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
+        }, app.config['SECRET_KEY'], algorithm="HS256")
+        return jsonify({'token': token})
+    return jsonify({'message': 'Nieprawidłowe dane, nyah~ (๑´•ω • `๑)'}), 401
+
+# 💖 Stronka chroniona przez moc friendshipu
+@app.route('/secret', methods=['GET'])
+@token_required
+def secret_area():
+    return jsonify({'message': 'Witaj w tajnej strefie przyjaźni i autoryzacji~! 🎀💻'})
+
+if __name__ == '__main__':
+    app.run(debug=True)

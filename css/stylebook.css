@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav{
+    width: 100%;
+    height: 12.5%;
+    background-color: #5C4033;
+}
+
+main{
+    width: 100%;
+    height: 87.5%;
+    background-color: #f5f5f0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-image: url(../img/salon.png);
+    background-position: center;
+    background-size: cover;
+}

@@ -24,6 +24,9 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-image: url(../img/salon.png);
+    background-position: center;
+    background-size: cover;
 }
 
 .bookButton{
@@ -54,7 +57,7 @@ main{
 .block{
     width: 28%;
     height: 90%;
-    background-color: #b3b3b3;
+    background-color: rgb(179, 179, 179, 0.8);
     border-radius: 20px;
     color: white;
     padding: 1%;

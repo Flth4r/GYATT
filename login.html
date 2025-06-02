@@ -13,16 +13,12 @@
     <main>
     </main>
     <div class="formularz">
-        <form action="" class="sr">
-            <div class="wybor">
-                <input type="radio" name="emailtel" id="email"> Adres E-mail  
-                <input type="radio" name="emailtel" id="tel" style="margin-left: 5%;"> Numer Telefonu
-            </div>
-            <input type="text" placeholder="  podaj E-mail" class="tekst" id="inputKontakt"> <br>
-            <input type="text" name="" id="" placeholder="  podaj Hasło" class="tekst"> <br>
+        <form action="loggedin.php" method="post" class="sr">
+            <input type="text" placeholder="podaj login" name="login" class="tekst" id="inputKontakt" required> <br>
+            <input type="password" name="password" id="" placeholder="podaj Hasło" class="tekst" required> <br>
             <button class="przycisk">Zaloguj</button> <br>
-            <a href="" class="register">Załóż Konto</a> 
         </form>
+        <a href="" class="register">Załóż Konto</a> 
     </div>
 
     <script>
@@ -32,13 +28,13 @@
 
         emailRadio.addEventListener("change", () => {
             if (emailRadio.checked) {
-                inputKontakt.placeholder = "  podaj E-mail";
+                inputKontakt.placeholder = "podaj E-mail";
             }
         });
 
         telRadio.addEventListener("change", () => {
             if (telRadio.checked) {
-                inputKontakt.placeholder = "  podaj numer telefonu";
+                inputKontakt.placeholder = "podaj numer telefonu";
             }
         });
     </script>

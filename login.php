@@ -13,7 +13,7 @@
     <main>
     </main>
     <div class="formularz">
-        <form action="loggingin.php" method="post" class="sr">
+        <form action="" method="post" class="sr">
             <input type="text" placeholder="podaj login" name="login" class="tekst" id="inputKontakt" required> <br>
             <input type="password" name="password" id="" placeholder="podaj Hasło" class="tekst" required> <br>
             <button class="przycisk">Zaloguj</button> <br>
@@ -55,7 +55,7 @@
         }
         else
         {
-            header("Location: login.html");
+            header("Location: login.php");
         }
     }
     ?>

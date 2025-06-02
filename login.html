@@ -7,24 +7,41 @@
     <title>Login</title>
 </head>
 <body>
-    <header>
+    <nav>
 
-    </header>
+    </nav>
     <main>
-        <div class="formularz">
-            <form action="">
-                <input type="radio" name="" id=""> Adres E-mail
-                <input type="radio" name="" id=""> Numer Telefonu <br>
-                <input type="text" placeholder="podaj E-mail"> <br>
-                <input type="text" name="" id="" placeholder="podaj Hasło"> <br>
-                <button>Zaloguj</button> <br>
-                Nie masz Konta? <a href="">stwórz je za darmo</a> 
-            </form>
-        </div>
     </main>
-    <footer>
+    <div class="formularz">
+        <form action="" class="sr">
+            <div class="wybor">
+                <input type="radio" name="emailtel" id="email"> Adres E-mail  
+                <input type="radio" name="emailtel" id="tel" style="margin-left: 5%;"> Numer Telefonu
+            </div>
+            <input type="text" placeholder="  podaj E-mail" class="tekst" id="inputKontakt"> <br>
+            <input type="text" name="" id="" placeholder="  podaj Hasło" class="tekst"> <br>
+            <button class="przycisk">Zaloguj</button> <br>
+            <a href="" class="register">Załóż Konto</a> 
+        </form>
+    </div>
 
-    </footer>
+    <script>
+        let emailRadio = document.getElementById("email");
+        let telRadio = document.getElementById("tel");
+        let inputKontakt = document.getElementById("inputKontakt");
+
+        emailRadio.addEventListener("change", () => {
+            if (emailRadio.checked) {
+                inputKontakt.placeholder = "  podaj E-mail";
+            }
+        });
+
+        telRadio.addEventListener("change", () => {
+            if (telRadio.checked) {
+                inputKontakt.placeholder = "  podaj numer telefonu";
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -43,20 +43,28 @@
       }
       aside {
         width: 0;
+        min-width: 0;
         overflow: hidden;
-        background: #2196f3; /* Solid blue color */
-        color: #fff; /* White text for contrast */
+        background: #2196f3;
+        color: #fff;
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
         transition: width 0.3s;
         position: relative;
         height: 100%;
         z-index: 1;
         padding: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      aside:not(.active) > * {
+        display: none;
       }
       aside.active {
-        width: 300px;
+        width: 600px;
         padding: 1em;
-        background: #2196f3; /* Ensure same color when active */
+        background: #2196f3;
         color: #fff;
       }
       .side-toggle-btn {
@@ -79,29 +87,59 @@
     <div class="content-wrapper">
       <main id="mainContent">
         <button class="side-toggle-btn" onclick="toggleAside()">&#9776;</button>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti in
-        fugit consequuntur necessitatibus quia accusantium molestiae nisi?
-        Explicabo quia ullam pariatur quam odit nemo expedita cupiditate
-        deleniti! Itaque vitae amet accusantium illo, adipisci dolore magnam
-        quaerat cupiditate dicta, quis aut sed ut quae voluptates asperiores
-        placeat laboriosam repudiandae a blanditiis.
+        <form style="margin-bottom: 1em">
+          <label>
+            Time:
+            <input type="time" name="time" value="09:00" />
+            <input type="time" name="time" value="18:00" />
+          </label>
+          <label style="margin-left: 1em">
+            Day of week:
+            <select name="day">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+              <option value="sunday">Sunday</option>
+            </select>
+          </label>
+        </form>
       </main>
       <aside id="pullupAside">
-        <strong>This is the pull-up aside section!</strong>
-        <button onclick="toggleAside()" style="float: right">Close</button>
-        <!-- Add your content here -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5em"></div>
+        <button>00:00 - 01:00</button>
+        <button>01:00 - 02:00</button>
+        <button>02:00 - 03:00</button>
+        <button>03:00 - 04:00</button>
+        <button>04:00 - 05:00</button>
+        <button>05:00 - 06:00</button>
+        <button>06:00 - 07:00</button>
+        <button>07:00 - 08:00</button>
+        <button>08:00 - 09:00</button>
+        <button>09:00 - 10:00</button>
+        <button>10:00 - 11:00</button>
+        <button>11:00 - 12:00</button>
+        <button>12:00 - 13:00</button>
+        <button>13:00 - 14:00</button>
+        <button>14:00 - 15:00</button>
+        <button>15:00 - 16:00</button>
+        <button>16:00 - 17:00</button>
+        <button>17:00 - 18:00</button>
+        <button>18:00 - 19:00</button>
+        <button>19:00 - 20:00</button>
+        <button>20:00 - 21:00</button>
+        <button>21:00 - 22:00</button>
+        <button>22:00 - 23:00</button>
+        <button>23:00 - 00:00</button>
+      </div>
       </aside>
     </div>
     <script>
       function toggleAside() {
         const aside = document.getElementById("pullupAside");
-        const main = document.getElementById("mainContent");
         aside.classList.toggle("active");
-        if (aside.classList.contains("active")) {
-          main.style.marginRight = "300px";
-        } else {
-          main.style.marginRight = "0";
-        }
       }
     </script>
   </body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/loginstyl.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <nav></nav>
+    <main></main>
+    <div class="formularz">
+      <form action="loggedin.php" method="post" class="sr">
+        <input
+          type="imie"
+          name="nazwisko"
+          id=""
+          placeholder="podaj imie"
+          class="tekst"
+          required
+        />
+        <br />
+        <input
+          type="nazwisko"
+          name="nazwisko"
+          id=""
+          placeholder="podaj nazwisko"
+          class="tekst"
+          required
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="podaj login"
+          name="login"
+          class="tekst"
+          id="inputKontakt"
+          required
+        />
+        <br />
+        <input
+          type="password"
+          name="password"
+          id=""
+          placeholder="podaj Hasło"
+          class="tekst"
+          required
+        />
+        <br />
+        <button class="przycisk">Załóż Konto</button> <br />
+      </form>
+    </div>
+
+    <script>
+      let emailRadio = document.getElementById("email");
+      let telRadio = document.getElementById("tel");
+      let inputKontakt = document.getElementById("inputKontakt");
+
+      emailRadio.addEventListener("change", () => {
+        if (emailRadio.checked) {
+          inputKontakt.placeholder = "podaj E-mail";
+        }
+      });
+
+      telRadio.addEventListener("change", () => {
+        if (telRadio.checked) {
+          inputKontakt.placeholder = "podaj numer telefonu";
+        }
+      });
+    </script>
+  </body>
+</html>

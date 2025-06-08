@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pl" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logowanie - Booking Duszka Matuszka</title>
+  <style>
+    @font-face {
+        font-family: Rinter;
+        src: url("../Rinter/Web-PS/Rinter.woff2");
+        }
+    body {
+      background: #f0e4d7;
+      font-family: Rinter;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      width: 600px;
+      display: flex;
+      padding: 40px;
+    }
+    .form-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 30px;
+    }
+    .form-section h2 {
+      margin-bottom: 20px;
+      color: #6a4f4b;
+    }
+    input {
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    input:focus {
+      border-color: #b96e43;
+    }
+    button {
+      padding: 12px 15px;
+      background-color: #b96e43;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #9a5a2e;
+    }
+    .animation-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: #ffe9d6;
+      border-radius: 12px;
+      height: 300px;
+    }
+
+    /* Hairdresser head */
+    .head {
+      width: 120px;
+      height: 120px;
+      background: #d9b382;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: inset 10px 0 15px #b88752;
+    }
+
+    /* Hair base styles - hidden by default */
+    .hair {
+      position: absolute;
+      top: -30px;
+      left: 10px;
+      width: 100px;
+      height: 50px;
+      border-radius: 50% 50% 30% 30%;
+      box-shadow: 10px 5px 10px inset;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    /* Hair style 1 */
+    .hair.style1 {
+      background: #7b4f30;
+      box-shadow: 10px 5px 10px #5a3820 inset;
+      opacity: 1;
+    }
+    /* Hair style 2 - curly hair */
+    .hair.style2 {
+      background: #c27c45;
+      border-radius: 50% 50% 50% 50%;
+      box-shadow:
+        0 0 10px #9f6334 inset,
+        10px 10px 5px #855525 inset;
+      opacity: 1;
+    }
+    /* Hair style 3 - spiky */
+    .hair.style3 {
+      background: linear-gradient(135deg, #5a3420 20%, #9c6134 80%);
+      clip-path: polygon(
+        0% 100%, 10% 30%, 20% 70%, 30% 20%, 40% 70%, 50% 10%, 
+        60% 70%, 70% 20%, 80% 70%, 90% 30%, 100% 100%, 100% 0%, 0% 0%
+      );
+      box-shadow: 0 5px 10px #5a3420 inset;
+      opacity: 1;
+    }
+    .hair.style4 {
+      background: #a6632b;
+      box-shadow: 0 0 10px #855525 inset;
+      opacity: 1;
+    }
+    .hair.style5 {
+      background: #d9a14d;
+      box-shadow: 0 0 10px #bb8833 inset;
+      opacity: 1;
+    }
+
+
+    /* Brush */
+    .brush {
+      position: absolute;
+      width: 90px;
+      height: 30px;
+      background: #a6632b;
+      border-radius: 8px;
+      top: 100px;
+      left: 130px;
+      transform-origin: left center;
+      box-shadow: 0 0 8px #a6632b88;
+      animation-play-state: paused;
+      animation-name: brush-move;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      transition: box-shadow 0.3s ease;
+    }
+    .brush::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 70px;
+      width: 15px;
+      height: 18px;
+      background: #d9a14d;
+      border-radius: 2px;
+      box-shadow: inset 2px 2px 5px #bb8833;
+    }
+    /* Brush glow when active */
+    .brush.active {
+      box-shadow: 0 0 15px 4px #d18c32cc;
+    }
+
+    @keyframes brush-move {
+      0% {
+        transform: rotate(10deg) translateX(0);
+      }
+      50% {
+        transform: rotate(-10deg) translateX(15px);
+      }
+      100% {
+        transform: rotate(10deg) translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2>Logowanie</h2>
+      <input id="username" type="text" placeholder="Nazwa użytkownika" autocomplete="off" />
+      <input id="password" type="password" placeholder="Hasło" autocomplete="off" />
+      <button type="submit">Zaloguj się</button>
+    </div>
+    <div class="animation-section">
+      <div class="head">
+        <div class="hair style1 hair-visible"></div>
+        <div class="hair style2"></div>
+        <div class="hair style3"></div>
+      </div>
+      <div class="brush" id="brush"></div>
+    </div>
+  </div>
+
+  <script>
+    const inputs = document.querySelectorAll('input');
+    const brush = document.getElementById('brush');
+    const hairs = document.querySelectorAll('.hair');
+    let typingTimer;
+    const typingDelay = 1000; // 1 second after stop typing
+
+    function startBrushing() {
+      brush.style.animationPlayState = 'running';
+      brush.classList.add('active');
+    }
+    function stopBrushing() {
+      brush.style.animationPlayState = 'paused';
+      brush.classList.remove('active');
+      changeHairStyle();
+    }
+
+    // Randomly pick a hair style different from current
+    function changeHairStyle() {
+      let currentIndex = Array.from(hairs).findIndex(h => h.classList.contains('hair-visible'));
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * hairs.length);
+      } while (newIndex === currentIndex);
+
+      hairs.forEach((h, i) => {
+        if (i === newIndex) {
+          h.classList.add('hair-visible');
+          h.style.opacity = 1;
+        } else {
+          h.classList.remove('hair-visible');
+          h.style.opacity = 0;
+        }
+      });
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        startBrushing();
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(() => {
+          stopBrushing();
+        }, typingDelay);
+      });
+    });
+
+    // Initially paused
+    stopBrushing();
+  </script>
+</body>
+</html>

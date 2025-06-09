@@ -75,8 +75,6 @@ function remindLogin() {
     }
 }
 
-
-//chat gpt - nie ma chuja ze ja bym cos takiego ugotował
 function createCalendar(parentId, unavailableDates = [], highTrafficDates = []) {
     const parent = document.getElementById(parentId);
     if (!parent) return;
@@ -104,6 +102,36 @@ function createCalendar(parentId, unavailableDates = [], highTrafficDates = []) 
     const today = new Date();
     let viewYear = today.getFullYear();
     let viewMonth = today.getMonth();
+
+    function updateSidebar(day)
+    {
+        let hoursGroup = document.getElementById("hours-group");
+        let buttons = hoursGroup.getElementsByTagName("button");
+
+        while (buttons.length != 0)
+        {
+            buttons[buttons.length-1].remove();
+        }
+
+        if (day % 7 != 0)
+        {
+            for(let i=9; i<19; i++)
+            {
+                let button = document.createElement("button");
+                button.textContent = i + ":00";
+                hoursGroup.appendChild(button);
+            }
+        }
+        else
+        {
+            for(let i=9; i<15; i++)
+            {
+                let button = document.createElement("button");
+                button.textContent = i + ":00";
+                hoursGroup.appendChild(button);
+            }
+        }
+    }
 
     function render(year, month) {
         wrapper.innerHTML = '';
@@ -201,7 +229,7 @@ function createCalendar(parentId, unavailableDates = [], highTrafficDates = []) 
 
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
-            if (unavailableDates.includes(dateStr)) {
+            if (unavailableDates.includes(dateStr) || day % 7 == 1) {
                 td.style.background = '#e57373';
                 td.style.color = '#fff';
                 td.style.cursor = 'not-allowed';
@@ -210,13 +238,13 @@ function createCalendar(parentId, unavailableDates = [], highTrafficDates = []) 
                 td.style.color = '#222';
             }
 
-            if (!unavailableDates.includes(dateStr)) {
+            if (!unavailableDates.includes(dateStr) && day % 7 != 1 ) {
                 td.addEventListener('mouseover', () => {
-                    td.style.background = 'rgba(255, 255, 255, 0.23';
+                    td.style.background = '#eee';
                     td.style.color = '#222';
                 });
                 td.addEventListener('mouseout', () => {
-                    td.style.background = highTrafficDates.includes(dateStr) ? '#fff9c4' : '#fafafa';
+                    td.style.background = highTrafficDates.includes(dateStr) ? '#fff9c4' : '#fff';
                     td.style.color = highTrafficDates.includes(dateStr) ? '#222' : '#222';
                 });
                 td.onclick = () => {
@@ -224,6 +252,7 @@ function createCalendar(parentId, unavailableDates = [], highTrafficDates = []) 
                     wrapper.querySelectorAll('td').forEach(cell => cell.style.outline = '');
                     td.style.outline = '4px solid rgb(82, 82, 82)';
                     console.log('Wybrana data:', selectedDate);
+                    updateSidebar(day)
                 };
             }
 

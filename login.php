@@ -13,7 +13,8 @@
     <main>
     </main>
     <div class="formularz">
-        <form action="" method="post" class="sr">
+        <p class="logininfo" id="logininfo"></p>
+        <form action="login.php" method="post" class="sr">
             <input type="text" placeholder="podaj login" name="login" class="tekst" id="inputKontakt" required> <br>
             <input type="password" name="password" id="" placeholder="podaj Hasło" class="tekst" required> <br>
             <button class="przycisk">Zaloguj</button> <br>
@@ -22,21 +23,12 @@
     </div>
 
     <script>
-        let emailRadio = document.getElementById("email");
-        let telRadio = document.getElementById("tel");
-        let inputKontakt = document.getElementById("inputKontakt");
+        function LoginUnsuccessful()
+        {
+            let loginInfo = document.getElementById("logininfo");
 
-        emailRadio.addEventListener("change", () => {
-            if (emailRadio.checked) {
-                inputKontakt.placeholder = "podaj E-mail";
-            }
-        });
-
-        telRadio.addEventListener("change", () => {
-            if (telRadio.checked) {
-                inputKontakt.placeholder = "podaj numer telefonu";
-            }
-        });
+            loginInfo.textContent = "Niepoprawne dane logowania. Spróbuj ponownie.";
+        }
     </script>
 
     <?php
@@ -55,10 +47,9 @@
         }
         else
         {
-            header("Location: login.php");
+            header('Location: login.html');
         }
     }
     ?>
-
 </body>
 </html>

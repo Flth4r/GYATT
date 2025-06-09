@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Matuszka</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="sidebar-left-wrapper">
+      <aside class="sidebar-left" id="sidebarLeft">
+        <div>
+          <div class="filters-title">Filtry</div>
+
+          <div class="filter-group">
+            <h3 onclick="toggleFilterList(this)">
+              Kategoria A <span class="arrow">▸</span>
+            </h3>
+            <ul>
+              <li>Opcja A1</li>
+              <li>Opcja A2</li>
+              <li>Opcja A3</li>
+            </ul>
+          </div>
+
+          <div class="filter-group">
+            <h3 onclick="toggleFilterList(this)">
+              Kategoria B <span class="arrow">▸</span>
+            </h3>
+            <ul>
+              <li>Opcja B1</li>
+              <li>Opcja B2</li>
+            </ul>
+          </div>
+
+          <div class="filter-group">
+            <h3 onclick="toggleFilterList(this)">
+              Kategoria C <span class="arrow">▸</span>
+            </h3>
+            <ul>
+              <li>Opcja C1</li>
+              <li>Opcja C2</li>
+              <li>Opcja C3</li>
+              <li>Opcja C4</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <aside class="sidebar-login" id="sidebarLogin">
+        <div class="sidebar-footer">
+          <h2>Booking Matuszka</h2>
+          <button onclick="toggleLogin()">Zaloguj / Rejestruj</button>
+        </div>
+      </aside>
+    </div>
+    
+    <div class="main-content" id="mainContent">
+      <main class="container" id="blocksContainer">
+
+        <div class="container1">
+          <div class="rowHor fDown" onclick="onBlockClick()">
+            <img src="../saloon imgs/1.jpg" alt=""></img>
+            <div class="salon-text"> </div>
+            <div class="reveal-panel">
+              
+              Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+              ⭐⭐⭐⭐⭐ <br>
+            </div>
+          </div>
+
+          <div class="rowconatiner">
+            <div class="rowVer fRight" onclick="onBlockClick()">
+              <img src="../saloon imgs/2.jpg" alt=""></img>
+              <div class="salon-text"> </div>
+              <div class="reveal-panel">
+                
+                Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+                ⭐⭐⭐⭐⭐ <br>
+              </div>
+            </div>
+            <div class="rowVer fLeft" onclick="onBlockClick()">
+            <img src="../saloon imgs/3.jpg" alt=""></img>
+              <div class="salon-text"> </div>
+              <div class="reveal-panel">
+                
+                Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+                ⭐⭐⭐⭐⭐ <br>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowHor fUp" onclick="onBlockClick()">
+            <img src="../saloon imgs/3.jpg" alt=""></img>
+            <div class="salon-text"> </div>
+            <div class="reveal-panel">
+              
+              Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+              ⭐⭐⭐⭐⭐ <br>
+            </div>
+          </div>
+        </div>
+        <div class="container1">
+          <div class="rowconatiner">
+            <div class="rowVer fRight" onclick="onBlockClick()">
+              <img src="../saloon imgs/5.jpg" alt=""></img>
+              <div class="salon-text"> </div>
+              <div class="reveal-panel">
+                
+                Strasznie Chujowy... <br>
+                👎👎🏿 <br>
+              </div>
+            </div>
+            <div class="rowVer fLeft" onclick="onBlockClick()">
+              <img src="../saloon imgs/3.jpg" alt=""></img>
+              <div class="salon-text"> </div>
+              <div class="reveal-panel">
+                
+                Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+                ⭐⭐⭐⭐⭐ <br>
+              </div>
+            </div>
+          </div>
+          
+          <div class="rowHor fUp" onclick="onBlockClick()">
+              <img src="../saloon imgs/1.jpg" alt=""></img>
+              <div class="salon-text"> </div>
+              <div class="reveal-panel">
+                
+                Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+                ⭐⭐⭐⭐⭐ <br>
+              </div>
+          </div>
+          <div class="rowHor fDown" onclick="onBlockClick()">
+              <img src="../saloon imgs/2.jpg" alt=""></img>
+              <div class="salon-text"> </div>
+              <div class="reveal-panel">
+                
+                Apsolutnie najlepszy salon fryzjerski w mieście! <br>
+                ⭐⭐⭐⭐⭐ <br>
+              </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+
+    <aside class="sidebar-right" id="sidebarRight">
+      <div class="back-arrow" onclick="onBackClick()">← Powrót</div>
+
+      <div class="service-group">
+        <h3 class="service-title">Wybierz Usługę</h3>
+        <button>Strzyżenie</button>
+        <button>Koloryzacja</button>
+        <button>Stylizacja</button>
+      </div>
+
+      <div class="service-group">
+        <h3 class="service-title">Wybierz Godzinę</h3>
+        <button>09:00</button>
+        <button>10:00</button>
+        <button>11:00</button>
+        <button>12:00</button>
+        <button>13:00</button>
+        <button>14:00</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="test.js"></script>
+</body>
+</html>
